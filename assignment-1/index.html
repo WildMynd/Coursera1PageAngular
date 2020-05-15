@@ -12,7 +12,7 @@
       <div>
         Enter a comma delimited list of the food you like to eat:<br>
         <input type="text"
-        ng-model="food"><br>
+        ng-model="food"> Note: spaces and blanks between commas will be ignored<br>
         <button ng-click="countFood();">Check Food</button>
       </div>
       <div>{{foodMessage}}</div>

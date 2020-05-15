@@ -12,10 +12,19 @@ function LunchCheckController($scope) {
   $scope.countFood = function () {
     if ($scope.food.length > 0) {
       var foodArr;
-      var count;
+      var count = 0;
       foodArr = $scope.food.split(",");
-      count = foodArr.length;
-      $scope.foodMessage = "Found "+count+" food items";
+      for (var i = 0; i < foodArr.length; i++) {
+        var entry = foodArr[i];
+        if (entry.trim().length > 0) {
+          count++;
+        }
+      }
+      if (count <= 3) {
+        $scope.foodMessage = "Enjoy!";
+      } else {
+        $scope.foodMessage = "Too Much!";
+      }
     } else {
       $scope.foodMessage = "Please enter a value";
     }

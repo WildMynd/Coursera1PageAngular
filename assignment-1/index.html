@@ -10,10 +10,10 @@
     <h1>Food Checker</h1>
     <div ng-controller="LunchCheckController">
       <div>
-        Enter a comma delimited list of the food you like to eat:<br>
+        Enter a comma delimited list of the foods you normally eat for lunch:<br>
         <input type="text"
         ng-model="food"> Note: spaces and blanks between commas will be ignored<br>
-        <button ng-click="countFood();">Check Food</button>
+        <button ng-click="countFood();">Check If Too Much</button>
       </div>
       <div>{{foodMessage}}</div>
     </div>

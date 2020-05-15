@@ -23,10 +23,10 @@ function LunchCheckController($scope) {
       if (count <= 3) {
         $scope.foodMessage = "Enjoy!";
       } else {
-        $scope.foodMessage = "Too Much!";
+        $scope.foodMessage = "Too much!";
       }
     } else {
-      $scope.foodMessage = "Please enter a value";
+      $scope.foodMessage = "Please enter data first";
     }
   };
 }

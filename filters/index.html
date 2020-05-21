@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <meta charset="utf-8">
+    <title>Lunch Check Application</title>
+  </head>
+  <body ng-app="LunchApp">
+    <h1>Food Checker</h1>
+    <div ng-controller="LunchCheckController">
+      <div>
+        Enter a comma delimited list of the foods you normally eat for lunch:<br>
+        <input type="text"
+        ng-model="food"> Note: spaces and blanks between commas will be ignored<br>
+        <button ng-click="countFood();">Check If Too Much</button>
+      </div>
+      <div>{{foodMessage}}</div>
+    </div>
+  </body>
+</html>

@@ -4,14 +4,12 @@
     <meta charset="utf-8">
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
-    <!--link rel="stylesheet" href="styles.css"-->
     <link rel="stylesheet" href="bootstrap.min.css">
     <title>Custom Service</title>
   </head>
   <body>
     <h1>My Shopping List!</h1>
 
-    <!-- LIST #1 - unlimited items -->
     <div class="card border-primary mb-3"  style="max-width: 600px;">
       <div ng-controller='ToBuyListController as toBuyList'>
         <div class="card-header">To Buy</div>
@@ -27,7 +25,6 @@
       </div>
     </div>
 
-    <!-- LIST #2 (limited to 3 items) -->
     <div class="card border-primary mb-3"  style="max-width: 600px;">
       <div id="list2" ng-controller='BoughtListController as boughtList'>
         <div class="card-header">Already Brought</div>

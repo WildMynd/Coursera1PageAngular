@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app='ShoppingListsApp'>
+<html ng-app='ShoppingListCheckOffApp'>
   <head>
     <meta charset="utf-8">
     <script src="angular.min.js"></script>
@@ -8,10 +8,10 @@
     <title>Custom Service</title>
   </head>
   <body>
-    <h1>My Shopping List!</h1>
+    <h1>Shopping List Check Off</h1>
 
     <div class="card border-primary mb-3"  style="max-width: 600px;">
-      <div ng-controller='ToBuyListController as toBuyList'>
+      <div ng-controller='ToBuyController as toBuyList'>
         <div class="card-header">To Buy</div>
           <div class="card-body">
             <ol>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="card border-primary mb-3"  style="max-width: 600px;">
-      <div id="list2" ng-controller='BoughtListController as boughtList'>
+      <div id="list2" ng-controller='AlreadyBoughtController as boughtList'>
         <div class="card-header">Already Brought</div>
           <div class="card-body">
             <ol>

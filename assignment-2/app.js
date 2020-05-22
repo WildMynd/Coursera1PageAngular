@@ -1,17 +1,17 @@
 (function () {
 'use strict';
 
-angular.module('ShoppingListsApp', [])
-.controller('ToBuyListController', ToBuyListController)
-.controller('BoughtListController', BoughtListController)
-.provider('ShoppingListService', ShoppingListServiceProvider)
+angular.module('ShoppingListCheckOffApp', [])
+.controller('ToBuyController', ToBuyController)
+.controller('AlreadyBoughtController', AlreadyBoughtController)
+.provider('ShoppingListCheckOffService', ShoppingListCheckOffServiceProvider)
 .config(Config);
 
-Config.$inject = ['ShoppingListServiceProvider'];
-function Config(ShoppingListServiceProvider) {
+Config.$inject = ['ShoppingListCheckOffServiceProvider'];
+function Config(ShoppingListCheckOffServiceProvider) {
   // Initialize lists
-  ShoppingListServiceProvider.defaults.maxItems = 10;
-  ShoppingListServiceProvider.defaults.defaultItems = [
+  ShoppingListCheckOffServiceProvider.defaults.maxItems = 10;
+  ShoppingListCheckOffServiceProvider.defaults.defaultItems = [
     {name:"Bacon",quantity:"1 Pound"},
     {name:"Bread",quantity:"1 Loaf"},
     {name:"Onions",quantity:"2 Pounds"},
@@ -24,28 +24,28 @@ function Config(ShoppingListServiceProvider) {
   ];
 }
 
-ToBuyListController.$inject = ['ShoppingListService'];
-function ToBuyListController(ShoppingListService) {
+ToBuyController.$inject = ['ShoppingListCheckOffService'];
+function ToBuyController(ShoppingListCheckOffService) {
   var toBuyList = this;
 
   toBuyList.errorMessage="Everything is bought!";
-  toBuyList.items = ShoppingListService.getToBuyItems();
+  toBuyList.items = ShoppingListCheckOffService.getToBuyItems();
 
   toBuyList.buyItem = function (itemIndex) {
-    ShoppingListService.buyItem(itemIndex);
+    ShoppingListCheckOffService.buyItem(itemIndex);
   };
 }
 
-BoughtListController.$inject = ['ShoppingListService'];
-function BoughtListController(ShoppingListService) {
+AlreadyBoughtController.$inject = ['ShoppingListCheckOffService'];
+function AlreadyBoughtController(ShoppingListCheckOffService) {
   var boughtList = this;
 
   boughtList.errorMessage = "Nothing bought yet";
-  boughtList.items = ShoppingListService.getBoughtItems();
+  boughtList.items = ShoppingListCheckOffService.getBoughtItems();
 
 }
 
-function ShoppingListService(maxItems, itemsToBuy) {
+function ShoppingListCheckOffService(maxItems, itemsToBuy) {
   var service = this;
 
   service.toBuyItems = itemsToBuy;
@@ -66,7 +66,7 @@ function ShoppingListService(maxItems, itemsToBuy) {
   };
 }
 
-function ShoppingListServiceProvider() {
+function ShoppingListCheckOffServiceProvider() {
   var provider = this;
   var shoppingList;
 
@@ -77,7 +77,7 @@ function ShoppingListServiceProvider() {
 
   provider.$get = function () {
     if (typeof shoppingList === "undefined") {
-      shoppingList = new ShoppingListService(provider.defaults.maxItems,
+      shoppingList = new ShoppingListCheckOffService(provider.defaults.maxItems,
                                                  provider.defaults.defaultItems);
     }
     return shoppingList;

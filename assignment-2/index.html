@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app='ShoppingListsApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <!--link rel="stylesheet" href="styles.css"-->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <title>Custom Service</title>
+  </head>
+  <body>
+    <h1>My Shopping List!</h1>
+
+    <!-- LIST #1 - unlimited items -->
+    <div class="card border-primary mb-3"  style="max-width: 600px;">
+      <div ng-controller='ToBuyListController as toBuyList'>
+        <div class="card-header">To Buy</div>
+          <div class="card-body">
+            <ol>
+              <li class="list-group-item d-flex justify-content-between align-items-center" ng-repeat="item in toBuyList.items">
+                Buy {{ item.quantity }} {{ item.name }}
+                <button class="btn btn-primary" ng-click="toBuyList.buyItem($index);">Bought</button>
+              </li>
+            </ol>
+          <p ng-if="!toBuyList.items.length" class="text-secondary">{{toBuyList.errorMessage}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIST #2 (limited to 3 items) -->
+    <div class="card border-primary mb-3"  style="max-width: 600px;">
+      <div id="list2" ng-controller='BoughtListController as boughtList'>
+        <div class="card-header">Already Brought</div>
+          <div class="card-body">
+            <ol>
+              <li class="list-group-item d-flex justify-content-between align-items-center"  ng-repeat="item in boughtList.items">
+                Bought {{ item.quantity }} of {{ item.name }}
+                <!--span class="badge badge-pill badge-success">Success</span-->
+              </li>
+            </ol>
+            <p ng-if="!boughtList.items.length" class="text-secondary">{{boughtList.errorMessage}}</div-->
+         </div>
+       </div>
+    </div>
+
+  </body>
+</html>

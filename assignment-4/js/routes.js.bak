@@ -1,0 +1,52 @@
+(function () {
+'use strict';
+
+angular.module('MenuApp')
+.config(RoutesConfig);
+
+RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+function RoutesConfig($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise('/');
+  $stateProvider
+
+  .state('home', {
+    url: '/',
+    templateUrl: 'js/views/templates/home.template.html'
+  })
+
+  .state('categoriesList', {
+    url: '/category-list',
+    templateUrl: 'js/views/templates/main-categorylist.template.html',
+    controller: 'MainCategoryListController as categoriesList',
+    resolve: {
+      items: ['MenuDataService', function (MenuDataService) {
+        return MenuDataService.getCategories();
+      }]
+    }
+  })
+
+  .state('mainList', {
+    url: '/main-list',
+    templateUrl: 'js/views/templates/main-shoppinglist.template.html',
+    controller: 'MainShoppingListController as mainList',
+    resolve: {
+      items: ['ShoppingListService', function (ShoppingListService) {
+        return ShoppingListService.getItems();
+      }]
+    }
+  })
+
+  // Item detail
+  .state('mainList.itemDetail', {
+    // url: '/item-detail/{itemId}',
+    templateUrl: 'js/views/templates/item-detail.template.html',
+    controller: 'ItemDetailController as itemDetail',
+    params: {
+      itemId: null
+    }
+  })
+
+}
+
+})();

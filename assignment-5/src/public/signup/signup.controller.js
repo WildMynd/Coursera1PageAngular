@@ -7,14 +7,14 @@ angular.module('public')
 SignUpController.$inject = ['UserService', 'MenuService','$scope'];
 function SignUpController(UserService,MenuService,$scope) {
   var reg = this;
-  
+
   reg.submit = function () {
-    MenuService.checkMenuItem(reg.user.menufav).then(function(status) {
-      if (!status) {
+    MenuService.checkMenuItem(reg.user.menufav).then(function(result) {
+      if (!result.status) {
         reg.completed = false;
         reg.menuInvalid = true;
       } else {
-        UserService.saveUser(reg.user);
+        UserService.saveUser(reg.user,result.menu_item);
         reg.completed = true;
         reg.menuInvalid = false;
       }

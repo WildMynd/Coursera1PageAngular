@@ -7,146 +7,19 @@
       <h1>Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></h1><br><br>
     </div>
 
-
-    <form>
-      <div ng-if="myInfo.registered" class="text-center">
-        <div class="form-group row">
-          <label for="staticEmail" class="col-sm-4 col-form-label">First name:</label>
-          <div class="col-sm-6">
-            <input type="text" readonly class="form-control rounded"
-              ng-model="myInfo.user.firstname">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="staticEmail" class="col-sm-4 col-form-label">Last name:</label>
-          <div class="col-sm-6">
-            <input type="text" readonly class="form-control"
-              ng-model="myInfo.user.lastname">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="staticEmail" class="col-sm-4 col-form-label">Email:</label>
-          <div class="col-sm-6">
-            <input type="text" readonly class="form-control"
-              ng-model="myInfo.user.email">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputPassword" class="col-sm-4 col-form-label">Phone:</label>
-          <div class="col-sm-6">
-            <input type="text" readonly class="form-control"
-              ng-model="myInfo.user.phone">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="inputPassword" class="col-sm-4 col-form-label">Favorite Item</label>
-          <div class="col-sm-6">
-            <input type="text" readonly class="form-control"
-             ng-model="myInfo.user.menufav">
-          </div>
-        </div>
-        <br>
-        <button ui-sref="public.home">OK</button>
+    <div ng-if="myInfo.registered" class="card border-primary">
+      <div class="card-body">
+	      <h4 class="card-title"><b>{{myInfo.user.firstname}} {{myInfo.user.lastname}}</b></h4>
+        <p class="card-text"><b>Email: </b>{{myInfo.user.email}}<br><b>Phone: </b>{{myInfo.user.phone}}<br><b>Favorite Item: </b>{{myInfo.user.menufav}}</p>
       </div>
 
-    </form>
+      <img class="card-img-top" src="{{myInfo.basePath}}/images/{{myInfo.user.menu_item.short_name}}.jpg" alt="Card image">
+      <p class="cart-text"><b>{{myInfo.user.menu_item.name}}</b><br>{{myInfo.user.menu_item.description}}</p>
+      <!--a href="#" class="btn btn-primary">See Profile</a-->
+    </div>
+    <br>
+    <div ng-if="myInfo.registered" class="text-center">
+	    <button ui-sref="public.home" href="#/">OK</button>
+    </div>
 
-
-    <!--form name='myInfoForm' novalidate>
-      <div class="form-group row">
-        <label for="firstname" class="col-lg-2 col-form-label">First name:</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control-plaintext" name="firstname"
-            ng-model="myInfo.user.firstname" readonly>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="lastname" class="col-lg-2 col-form-label">Last name:</label>
-
-        <div class="col-sm-2">
-          <input type="text" class="form-control-plaintext" name="lastname"
-            ng-model="myInfo.user.lastname" readonly>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="email" class="col-lg-2 col-form-label">Email:</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control-plaintext" name="email"
-            ng-model="myInfo.user.email" readonly>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="phone" class="col-lg-2 col-form-label">Phone:</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control-plaintext" name="phone"
-            ng-model="myInfo.user.phone" readonly>
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <label for="firstname" class="col-lg-2 col-form-label">Favorite Menu item</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control-plaintext" name="menufav"
-            ng-model="myInfo.user.menufav" readonly>
-        </div>
-      </div>
-
-      <br>
-
-      <button ui-sref="public.home">OK</button>
-    </form-->
-    <!--div class="row">
-      <div>
-        <fieldset>
-          <form name='myInfoForm' novalidate>
-            <div class="form-group row">
-              <label for="firstname" class="col-sm-2 col-form-label">First name:</label>
-              <div class="col-sm-2">
-                <input type="text" class="form-control-plaintext" name="firstname"
-                  ng-model="myInfo.user.firstname" readonly>
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="lastname" class="col-sm-2 col-form-label">Last name:</label>
-            </div>
-            <div class="col-sm-2">
-              <input type="text" class="form-control-plaintext" name="lastname"
-                ng-model="myInfo.user.lastname" readonly>
-            </div>
-
-            <div class="form-group row">
-              <label for="email" class="col-sm-2 col-form-label">Email:</label>
-            </div>
-            <div class="col-sm-2">
-              <input type="text" class="form-control-plaintext" name="email"
-                ng-model="myInfo.user.email" readonly>
-            </div>
-
-            <div class="form-group row">
-              <label for="phone" class="col-sm-2 col-form-label">Phone:</label>
-            </div>
-            <div class="col-sm-2">
-              <input type="text" class="form-control-plaintext" name="phone"
-                ng-model="myInfo.user.phone" readonly>
-            </div>
-
-            <div class="form-group row">
-              <label for="firstname" class="col-sm-2 col-form-label">Favorite Menu item</label>
-            </div>
-            <div class="col-sm-2">
-              <input type="text" class="form-control-plaintext" name="menufav"
-                ng-model="myInfo.user.menufav" readonly>
-            </div>
-            <br>
-
-            <button ui-sref="public.home">OK</button>
-
-          </form>
-        </fieldset>
-      </div>
-    </div-->
 </div>

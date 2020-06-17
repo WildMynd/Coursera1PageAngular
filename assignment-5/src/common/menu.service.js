@@ -27,18 +27,27 @@ function MenuService($http, ApiPath, $q) {
     });
   };
 
+  service.getMenuItem = function (menuId) {
+    return $http.get(ApiPath + '/menu_items/' + menuId + '.json').then(function (response) {
+      return response.data;
+    });
+  };
+
   service.checkMenuItem = function (menuId) {
-    var deferred = $q.defer()
+    var deferred = $q.defer();
+    var message = {status: false, menu_item: null};
     $http.get(ApiPath + '/menu_items.json').then(function (response) {
       console.log(response);
       var allItems = response.data.menu_items;
       console.log(allItems.length);
       for (var i = 0; i < allItems.length; i++) {
         if (allItems[i].short_name == menuId) {
-          deferred.resolve(true);
+          message.status = true;
+          message.menu_item = allItems[i];
+          deferred.resolve(message);
         }
       }
-      deferred.resolve(false);
+      deferred.resolve(message);
     });
     return deferred.promise;
   };

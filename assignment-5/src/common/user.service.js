@@ -12,7 +12,7 @@ function UserService() {
   service.userdb = {};
   service.curEmail;
 
-  service.saveUser = function (user) {
+  service.saveUser = function (user, favorite) {
     console.log("UserService.saveUser: user = "+ user);
     var found = user.email in service.userdb;
     if (found) {
@@ -23,7 +23,8 @@ function UserService() {
       lastname: user.lastname,
       email: user.email,
       phone: user.phone,
-      menufav: user.menufav
+      menufav: user.menufav,
+      menu_item: favorite
     }
     service.curEmail = user.email;
   };
